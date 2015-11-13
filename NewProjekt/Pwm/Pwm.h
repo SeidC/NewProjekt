@@ -12,14 +12,6 @@
 #include "MyDefs.h"
 
 
-
-#define PWM_PRE_SCALER_1        1 
-#define PWM_PRE_SCALER_8        8
-#define PWM_PRE_SCALER_64       64
-#define PWM_PRE_SCALER_256      256
-#define PWM_PRE_SCALER_1024     1024
-
-
 typedef struct
 {
     volatile uint8_t* tccrReg;
@@ -42,7 +34,7 @@ typedef enum
 typedef enum 
 {
     PWM_NORMAL_MODE   = 0x08, //WGM Register -> Phase Correct PWM = 0x08
-    PWM_FAST_MODE            = 0x48, //WGM Register -> Fast PWM          = 0x48
+    PWM_FAST_MODE     = 0x48, //WGM Register -> Fast PWM          = 0x48
 
 }Pwm_Mode_t;
 
@@ -79,6 +71,13 @@ typedef enum
   
 }Pwm_OcrPort_t;
 
+typedef enum 
+{
+    PWM_HIDE_OUTPUT            = 0x00,
+    PWM_NO_INVERT_OUTPUT       = 0x08,
+    PWM_INVERT_OUTPUT          = 0x18,
+        
+}Pwm_OutputMode;
 
 typedef struct 
 {
@@ -106,6 +105,8 @@ Pwm_Mode_t Pwm_GetPwmMode(Pwm_Channel_t Pwm_channel);
 void Pwm_SetPwmDutyCycle(Pwm_Channel_t Pwm_channel, uint8_t Pwm_dutyCycle);
 
 void Pwm_EnableOrcPort(Pwm_Channel_t Pwm_channel);
+
+void Pwm_SetOutputMode(Pwm_Channel_t Pwm_channel, Pwm_OutputMode Pwm_output);
 
 #define PWM_IsPreScalerInCh0Range(preScaler)               \
         ((preScaler >= PWM_CH0_PRE_SCALER_0) &&            \

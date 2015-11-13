@@ -52,7 +52,7 @@ void Pwm_Init(Pwm_Channel_t Pwm_channel, Pwm_Mode_t Pwm_mode, Pwm_PreScaler_t Pw
      Pwm_SetPwmRegister(Pwm_channel);
      Pwm_SetPwmMode(Pwm_channel,Pwm_mode);
      Pwm_SetPwmPrescaler(Pwm_channel,Pwm_preScaler);     
-     TCCR0 |= (1<<COM01);
+
      return;
 }
 
@@ -181,5 +181,20 @@ void Pwm_EnableOrcPort(Pwm_Channel_t Pwm_channel)
     Pwm_Config_t* conf = Pwm_GetChannelConfig(Pwm_channel);
     
     SET_BIT(*reg->ddrReg,conf->portPin);
+    return;
+}
+
+
+void Pwm_SetOutputMode(Pwm_Channel_t Pwm_channel, Pwm_OutputMode Pwm_output)
+{
+    Pwm_RegisterConfig_t* reg = Pwm_GetChannel(Pwm_channel);
+    if(Pwm_output == PWM_HIDE_OUTPUT)
+    {
+        RESET_BITS(reg->tccrReg, PWM_INVERT_OUTPUT);
+    }
+    else 
+    {
+        SET_BITS(reg->tccrReg,Pwm_output);
+    }    
     return;
 }
