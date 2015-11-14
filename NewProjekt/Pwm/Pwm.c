@@ -46,12 +46,13 @@ Pwm_Config_t Pwm_config[PWM_NUMBER_OF_CHANNEL] =
                       },
 };
 
-void Pwm_Init(Pwm_Channel_t Pwm_channel, Pwm_Mode_t Pwm_mode, Pwm_PreScaler_t Pwm_preScaler)
+void Pwm_Init(Pwm_Channel_t Pwm_channel, Pwm_Mode_t Pwm_mode, Pwm_PreScaler_t Pwm_preScaler, Pwm_OutputMode_t Pwm_output)
 {
-	 Pwm_EnableOrcPort(Pwm_channel);
-     Pwm_SetPwmRegister(Pwm_channel);
-     Pwm_SetPwmMode(Pwm_channel,Pwm_mode);
+	 Pwm_SetPwmRegister(Pwm_channel);
+     Pwm_EnableOrcPort(Pwm_channel);
+	 Pwm_SetPwmMode(Pwm_channel,Pwm_mode);
      Pwm_SetPwmPrescaler(Pwm_channel,Pwm_preScaler);     
+	 Pwm_SetOutputMode(Pwm_channel,Pwm_output);
 
      return;
 }
@@ -185,16 +186,16 @@ void Pwm_EnableOrcPort(Pwm_Channel_t Pwm_channel)
 }
 
 
-void Pwm_SetOutputMode(Pwm_Channel_t Pwm_channel, Pwm_OutputMode Pwm_output)
+void Pwm_SetOutputMode(Pwm_Channel_t Pwm_channel, Pwm_OutputMode_t Pwm_output)
 {
     Pwm_RegisterConfig_t* reg = Pwm_GetChannel(Pwm_channel);
     if(Pwm_output == PWM_HIDE_OUTPUT)
     {
-        RESET_BITS(reg->tccrReg, PWM_INVERT_OUTPUT);
+        RESET_BITS(*reg->tccrReg, PWM_CLEAR_OUTPUT_FLAGS);
     }
     else 
     {
-        SET_BITS(reg->tccrReg,Pwm_output);
+        SET_BITS(*reg->tccrReg,Pwm_output);
     }    
     return;
 }

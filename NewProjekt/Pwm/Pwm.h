@@ -73,11 +73,21 @@ typedef enum
 
 typedef enum 
 {
-    PWM_HIDE_OUTPUT            = 0x00,
-    PWM_NO_INVERT_OUTPUT       = 0x08,
-    PWM_INVERT_OUTPUT          = 0x18,
+    PWM_HIDE_OUTPUT						= 0x00,
+    
+	/*--- Output enums for Normal PWM Mode ---*/
+	PWM_NORMAL_MODE_TOGGEL_OUTPUT		= 0x10,
+	PWM_NORMAL_MODE_SET_OUTPUT			= 0x20,
+	PWM_NORMAL_MODE_CLEAR_OUTPUT		= 0x30,
+	
+	/*--- Output eunums for Fast PWM Mode ---*/
+	PWM_FAST_MODE_NO_INVERT_OUTPUT      = 0x20,
+    PWM_FAST_MODE_INVERT_OUTPUT         = 0x30,
+	
+	/*--- Do not use this enum blow ---*/
+	PWM_CLEAR_OUTPUT_FLAGS				= 0x30,
         
-}Pwm_OutputMode;
+}Pwm_OutputMode_t;
 
 typedef struct 
 {
@@ -86,7 +96,7 @@ typedef struct
                            
 }Pwm_Config_t; 
 
-void Pwm_Init(Pwm_Channel_t Pwm_channel, Pwm_Mode_t Pwm_mode, Pwm_PreScaler_t Pwm_preScaler);
+void Pwm_Init(Pwm_Channel_t Pwm_channel, Pwm_Mode_t Pwm_mode, Pwm_PreScaler_t Pwm_preScaler, Pwm_OutputMode_t Pwm_output);
 
 void Pwm_SetPwmRegister(Pwm_Channel_t pwmChannel);
 
@@ -106,7 +116,7 @@ void Pwm_SetPwmDutyCycle(Pwm_Channel_t Pwm_channel, uint8_t Pwm_dutyCycle);
 
 void Pwm_EnableOrcPort(Pwm_Channel_t Pwm_channel);
 
-void Pwm_SetOutputMode(Pwm_Channel_t Pwm_channel, Pwm_OutputMode Pwm_output);
+void Pwm_SetOutputMode(Pwm_Channel_t Pwm_channel, Pwm_OutputMode_t Pwm_output);
 
 #define PWM_IsPreScalerInCh0Range(preScaler)               \
         ((preScaler >= PWM_CH0_PRE_SCALER_0) &&            \
