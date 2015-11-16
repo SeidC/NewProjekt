@@ -11,12 +11,6 @@
 
 #include "MyDefs.h"
 
-typedef struct 
-{
-	Sw_Status_t status;	
-	
-}Sw_Switch_t;
-
 
 typedef enum 
 {
@@ -24,6 +18,15 @@ typedef enum
 	SW_SWITCH_PUSHED		=	0x01
 	
 }Sw_Status_t;
+
+
+
+
+typedef struct
+{
+	Sw_Status_t status;
+	
+}Sw_Switch_t;
 
 
 typedef enum 
