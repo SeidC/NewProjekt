@@ -14,12 +14,22 @@
 
 typedef enum 
 {
-	SW_NOT_ACTIVE			=	0x00,
-	SW_SWITCH_PUSHED		=	0x01
+	/*--- Status Types for Switches ---*/
+	SW_SWITCH_NOT_SET	 =	0x01,
+	SW_SWITCH_SET		 =	0x02,
+	
+	/*--- Status Types for Buttons ---*/
+	SW_BUTTON_PUSHED	 =	0x10,
+	SW_BUTTON_NOT_PUSHED =	0x20,
 	
 }Sw_Status_t;
 
-
+typedef enum 
+{
+	SW_BUTTON				= 0x00,
+	SW_SWITCH				= 0x01
+	
+}Sw_SwitchType_t;
 
 
 typedef struct
