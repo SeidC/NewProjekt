@@ -139,3 +139,10 @@ vuint8_t* Port_GetPINRegister(Port_UsedPort_t portToUse)
     }
     return portPtr;
 }
+
+
+Port_IoControl_t Port_GetDirection(Port_UsedPort_t portToUse, Port_UsedPin_t pinToUse)
+{
+	vuint8_t *port = Port_GetDDRRegister(portToUse);
+	return (Port_IoControl_t) GET_BIT(*port,pinToUse);	
+}

@@ -166,9 +166,6 @@
     <Compile Include="Switch\Switch.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Switch\Switch_Ports.h">
-      <SubType>compile</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Switch" />

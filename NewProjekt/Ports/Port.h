@@ -59,6 +59,7 @@ vuint8_t* Port_GetDDRRegister(Port_UsedPort_t portToUse);
 vuint8_t* Port_GetPORTRegister(Port_UsedPort_t portToUse);   
 vuint8_t* Port_GetPINRegister(Port_UsedPort_t portToUse);                     
 
+Port_IoControl_t Port_GetDirection(Port_UsedPort_t portToUse, Port_UsedPin_t pinToUse);
 
 
 
