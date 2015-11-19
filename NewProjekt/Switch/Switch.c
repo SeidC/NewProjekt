@@ -52,7 +52,7 @@ Sw_Switch_t Sw_switches[SW_NUMBER_OF_SWITCHES] =	{
 #define Sw_GetSwitch(Sw_switch)						\
 		(Sw_switches[Sw_switch].status)
 		
-#define Sw_IsHandleInRange(Sw_handle)				\				
+#define Sw_IsHandleInRange(Sw_handle)				\
 		(Sw_handle < SW_NUMBER_OF_SWITCHES)
 		
 		
@@ -73,13 +73,15 @@ void Sw_MainFunction(void)
 	uint8_t i;
 	Port_UsedPort_t port;
 	Port_UsedPin_t	pin;
+	Port_IoControl_t dir;
 	
 	for(i = 0; i < SW_NUMBER_OF_SWITCHES; i ++)
 	{
 		port	= Sw_GetPort(i);
 		pin		= Sw_GetPin(i);
+		dir		= Port_GetDirection(port,pin); 
 		
-		if (Port_GetDirection(port,pin) == USE_PIN_AS_INPUT)
+		if (dir == USE_PIN_AS_INPUT)
 		{
 			if(Port_GetPin(port,pin) == PIN_HIGH)
 			{

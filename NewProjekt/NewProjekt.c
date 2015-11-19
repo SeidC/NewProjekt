@@ -12,6 +12,9 @@
 
 int main(void)
 {
+	DDRB = 0x00;
+	PORTB = 0x00; 
+	PINB  = 0x00;
     Port_SetPinConfiguration(USE_PORT_B,USE_PIN_0,USE_PIN_AS_INPUT);
 	Port_SetPinConfiguration(USE_PORT_B,USE_PIN_1,USE_PIN_AS_INPUT);
 	Port_SetPinConfiguration(USE_PORT_B,USE_PIN_2,USE_PIN_AS_OUTPUT);
@@ -40,7 +43,8 @@ int main(void)
 		{
 			Port_SetPin(USE_PORT_B,USE_PIN_3,PIN_LOW);
 		}
-		
+	
+	
         //TODO:: Please write your application code 
     }
 }

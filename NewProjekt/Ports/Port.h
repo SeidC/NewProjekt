@@ -50,6 +50,8 @@ typedef enum
 }Port_IoStatus_t;
 
 
+void Port_InitPort(Port_UsedPort_t portToUse);
+
 void Port_SetPinConfiguration(Port_UsedPort_t portToUse, Port_UsedPin_t  pinToUse, Port_IoControl_t pinDirection);
 void Port_SetPin(Port_UsedPort_t portToUse, Port_UsedPin_t pinToUse, Port_IoStatus_t ioStatus);
 
