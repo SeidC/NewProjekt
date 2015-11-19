@@ -10,19 +10,35 @@
 #include <avr/io.h>
                             
 
+void Port_InitPort(Port_UsedPort_t portToUse)
+{
+	vuint8_t* port;
+	vuint8_t* pin;
+	vuint8_t* ddr;
+	
+	ddr  = Port_GetDDRRegister(portToUse);
+	pin  = Port_GetPINRegister(portToUse);
+	port = Port_GetPORTRegister(portToUse);
+	
+	RESET_BITS(*ddr,0x00);
+	RESET_BITS(*pin,0x00);
+	RESET_BITS(*port,0x00);
+}
+
+
 void Port_SetPinConfiguration(Port_UsedPort_t portToUse, Port_UsedPin_t  pinToUse, Port_IoControl_t pinDirection)
 {    
-    vuint8_t *portPtr;
-                         
-    portPtr = Port_GetDDRRegister(portToUse);
-        
+    vuint8_t* ddr;
+	                         
+    ddr = Port_GetDDRRegister(portToUse);
+    	
     if (pinDirection == USE_PIN_AS_INPUT)
     {
-       SET_BIT(*portPtr,pinToUse);
+		RESET_BIT(*ddr,pinToUse);
     }
     else 
     {
-        RESET_BIT(*portPtr,pinToUse);
+       SET_BIT(*ddr,pinToUse);
     }
     return;
 }
@@ -46,7 +62,20 @@ void Port_SetPin(Port_UsedPort_t portToUse, Port_UsedPin_t pinToUse, Port_IoStat
 Port_IoStatus_t Port_GetPin(Port_UsedPort_t portToUse, Port_UsedPin_t pinToUse)
 {
     vuint8_t *port = Port_GetPINRegister(portToUse);
-    return GET_BIT(*port,pinToUse);
+	Port_IoStatus_t ret; 
+	uint8_t bitValue;
+	
+	bitValue = GET_BIT(*port,pinToUse);
+	if (bitValue == 0)
+	{
+		ret = PIN_LOW;
+	}
+	else
+	{
+		ret = PIN_HIGH;
+	}
+	
+    return ret;
 }
 
 
@@ -138,4 +167,24 @@ vuint8_t* Port_GetPINRegister(Port_UsedPort_t portToUse)
         break;
     }
     return portPtr;
+}
+
+
+Port_IoControl_t Port_GetDirection(Port_UsedPort_t portToUse, Port_UsedPin_t pinToUse)
+{
+	vuint8_t *port = Port_GetDDRRegister(portToUse);
+	Port_IoControl_t ret; 
+	uint8_t bitVal;
+	
+	bitVal =  GET_BIT(*port,pinToUse);
+	if (bitVal == 0)
+	{
+		ret = USE_PIN_AS_INPUT;
+	}
+	else 
+	{
+		ret = USE_PIN_AS_OUTPUT;
+	}
+	
+	return ret;	
 }

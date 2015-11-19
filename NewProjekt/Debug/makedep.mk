@@ -8,3 +8,5 @@ Ports\Port.c
 
 Pwm\Pwm.c
 
+Switch\Switch.c
+

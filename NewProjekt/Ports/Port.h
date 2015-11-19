@@ -50,6 +50,8 @@ typedef enum
 }Port_IoStatus_t;
 
 
+void Port_InitPort(Port_UsedPort_t portToUse);
+
 void Port_SetPinConfiguration(Port_UsedPort_t portToUse, Port_UsedPin_t  pinToUse, Port_IoControl_t pinDirection);
 void Port_SetPin(Port_UsedPort_t portToUse, Port_UsedPin_t pinToUse, Port_IoStatus_t ioStatus);
 
@@ -59,6 +61,7 @@ vuint8_t* Port_GetDDRRegister(Port_UsedPort_t portToUse);
 vuint8_t* Port_GetPORTRegister(Port_UsedPort_t portToUse);   
 vuint8_t* Port_GetPINRegister(Port_UsedPort_t portToUse);                     
 
+Port_IoControl_t Port_GetDirection(Port_UsedPort_t portToUse, Port_UsedPin_t pinToUse);
 
 
 

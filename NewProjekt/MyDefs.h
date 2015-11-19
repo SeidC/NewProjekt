@@ -37,6 +37,14 @@
 
 typedef volatile uint8_t vuint8_t;
 
+#define TRUE ((boolean)1)
+
+#define FALSE ((boolean)0)
+
+typedef uint8_t boolean;
+
+
+
 #ifndef F_CPU
     #define F_CPU 16000000UL
 #endif
