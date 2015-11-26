@@ -96,32 +96,144 @@ typedef struct
                            
 }Pwm_Config_t; 
 
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] Pwm_channel   Parameter_Description
+ *  @param [in] Pwm_mode      Parameter_Description
+ *  @param [in] Pwm_preScaler Parameter_Description
+ *  @param [in] Pwm_output    Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 void Pwm_Init(Pwm_Channel_t Pwm_channel, Pwm_Mode_t Pwm_mode, Pwm_PreScaler_t Pwm_preScaler, Pwm_OutputMode_t Pwm_output);
 
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] pwmChannel Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 void Pwm_SetPwmRegister(Pwm_Channel_t pwmChannel);
 
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] Pwm_channel Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 Pwm_RegisterConfig_t* Pwm_GetChannel(Pwm_Channel_t Pwm_channel);
 
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] Pwm_channel Parameter_Description
+ *  @param [in] Pwm_mode    Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 void Pwm_SetPwmMode(Pwm_Channel_t Pwm_channel, Pwm_Mode_t Pwm_mode);
 
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] Pwm_channel Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 Pwm_Config_t* Pwm_GetChannelConfig(Pwm_Channel_t Pwm_channel);
 
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] Pwm_channel Parameter_Description
+ *  @param [in] status      Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 void Pwm_SetActivationStatus(Pwm_Channel_t Pwm_channel, Pwm_Activation_t status);
 
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] Pwm_channel   Parameter_Description
+ *  @param [in] Pwm_preScaler Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 void Pwm_SetPwmPrescaler(Pwm_Channel_t Pwm_channel, Pwm_PreScaler_t Pwm_preScaler);
 
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] Pwm_channel Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 Pwm_Mode_t Pwm_GetPwmMode(Pwm_Channel_t Pwm_channel);
 
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] Pwm_channel   Parameter_Description
+ *  @param [in] Pwm_dutyCycle Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 void Pwm_SetPwmDutyCycle(Pwm_Channel_t Pwm_channel, uint8_t Pwm_dutyCycle);
 
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] Pwm_channel Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 void Pwm_EnableOrcPort(Pwm_Channel_t Pwm_channel);
 
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] Pwm_channel Parameter_Description
+ *  @param [in] Pwm_output  Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 void Pwm_SetOutputMode(Pwm_Channel_t Pwm_channel, Pwm_OutputMode_t Pwm_output);
 
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] preScaler Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 #define PWM_IsPreScalerInCh0Range(preScaler)               \
         ((preScaler >= PWM_CH0_PRE_SCALER_0) &&            \
           (preScaler <= PWM_CH0_PRE_SCALER_1024))
-          
+
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] preScaler Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */          
 #define PWM_IsPreScalerInCh2Range(preScaler)               \
         ((preScaler >= PWM_CH2_PRE_SCALER_0) &&            \
          (preScaler <= PWM_CH2_PRE_SCALER_1024))

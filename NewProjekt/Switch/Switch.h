@@ -58,8 +58,23 @@ typedef struct
 	
 }Sw_Switch_t;
 
-
+/**
+ *  @brief Brief
+ *  
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 void Sw_MainFunction(void);
+
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] Sw_handle Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 Sw_Status_t Sw_GetSwitchStatus(Sw_Handle_t Sw_handle);
 
 

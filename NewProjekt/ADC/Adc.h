@@ -159,52 +159,206 @@ typedef struct
 extern Adc_t Adc_adc;
 
 /*--- General Functions -----------------------------------------------------------------------------------*/
+
+/**
+ *  @brief Brief
+ *  
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 void Adc_Init(void);
 
+
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] adcPreScaler    Parameter_Description
+ *  @param [in] adcUseInterrupt Parameter_Description
+ *  @param [in] adcReference    Parameter_Description
+ *  @param [in] adcResult       Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 void Adc_SetupAdc(Adc_Prescaler_t adcPreScaler,
 				  Adc_Interrupt_t adcUseInterrupt,
                   Adc_Reference_t adcReference,
 				  Adc_ResultStyle_t adcResult);
 
+				  /**
+ *  @brief Brief
+ *  
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 void Adc_StopConversation(void);
 
+/**
+ *  @brief Brief
+ *  
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 void Adc_StartConversation(void);
 
+/**
+ *  @brief Brief
+ *  
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 boolean Adc_IsConversationComplete(void);
 
 /*--- Setter Functions ------------------------------------------------------------------------------------*/
+
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] adcAutoTrigger   Parameter_Description
+ *  @param [in] adcTriggerSoruce Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 void Adc_SetAutoTrigger(Adc_AutoTrigger_t adcAutoTrigger, Adc_AutoTriggerSource_t adcTriggerSoruce);
 
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] adcChannel Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 void Acd_SetChannel(Adc_Channel_t adcChannel);
 
+
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] adcEnableStatus Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 void Adc_SetEnableStatus(Adc_Enable_t adcEnableStatus);
 
+
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] adcRef Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 void Adc_SetAdcReference(Adc_Reference_t adcRef);
 
+
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] adcStyle Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 void Adc_SetResultStyls(Adc_ResultStyle_t adcStyle);
 
 /*--- Getter Functions --------------------------------------------------------------------------------------*/
+
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] adcValuePtr Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 void Adc_GetAdcValue(Adc_ADCHRegister_t* adcValuePtr);
 
+/**
+ *  @brief Brief
+ *  
+ *  @param [in] valuePtr Parameter_Description
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 void Adc_GetAdcRawValue(uint16_t* valuePtr);
 
+/**
+ *  @brief Brief
+ *  
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 Adc_Reference_t Adc_GetAdcReference(void);
 
+
+/**
+ *  @brief Brief
+ *  
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 Adc_ConversationStatus_t Adc_GetConversationStatus(void);
 
+/**
+ *  @brief Brief
+ *  
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 Adc_ResultStyle_t Adc_GetResultStyls(void);
 /*--- Macro (Helper) Functions -------------------------------------------------------------------------------*/
 
+/**
+ *  @brief Brief
+ *  
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 #define Adc_IsADMUXRegisterAvailable()			\
 		(Adc_adc.adcADMUXReg != NULL)
-		
+
+/**
+ *  @brief Brief
+ *  
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */	
 #define Adc_IsADCSRARegisterAvailable()			\
 		(Adc_adc.adcADCSRAReg != NULL)
 
 
+/**
+ *  @brief Brief
+ *  
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */
 #define Adc_IsADCHRegisterAvailable()			\
 		(Adc_adc.adcADCHReg != NULL)
-		
+
+
+/**
+ *  @brief Brief
+ *  
+ *  @return Return_Description
+ *  
+ *  @details Details
+ */		
 #define Adc_IsSFIORRegisterAvailable()			\
 		(Adc_adc.adcSFIORReg != NULL)
 		
