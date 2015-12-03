@@ -17,8 +17,9 @@ Adc_t Adc_adc =
 	.adcSFIORReg	= NULL,	
 };
 
-
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Adc_Init(void)
 {
 	Adc_adc.adcADCHReg		= (Adc_ADCHRegister_t*)   &ADCH;
@@ -44,6 +45,9 @@ void Adc_Init(void)
 	return;
 }
 
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Adc_SetupAdc(Adc_Prescaler_t adcPreScaler,		
 				  Adc_Interrupt_t adcUseInterrupt, 
 				  Adc_Reference_t adcReference,
@@ -64,6 +68,9 @@ void Adc_SetupAdc(Adc_Prescaler_t adcPreScaler,
 }
 
 
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Adc_SetAutoTrigger(Adc_AutoTrigger_t adcAutoTrigger, Adc_AutoTriggerSource_t adcTriggerSoruce)
 {
 	if(Adc_IsADCSRARegisterAvailable() && Adc_IsSFIORRegisterAvailable())
@@ -82,7 +89,9 @@ void Adc_SetAutoTrigger(Adc_AutoTrigger_t adcAutoTrigger, Adc_AutoTriggerSource_
 	return;
 }
 
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Acd_SetChannel(Adc_Channel_t adcChannel)
 {
 	if(Adc_IsADMUXRegisterAvailable())
@@ -92,6 +101,9 @@ void Acd_SetChannel(Adc_Channel_t adcChannel)
 	return;
 }
 
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Adc_SetEnableStatus(Adc_Enable_t adcEnableStatus)
 {
 	if (Adc_IsADCSRARegisterAvailable())
@@ -101,6 +113,10 @@ void Adc_SetEnableStatus(Adc_Enable_t adcEnableStatus)
 	return;
 }
 
+
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Adc_StartConversation(void)
 {
 	if(Adc_IsADCSRARegisterAvailable())
@@ -111,6 +127,9 @@ void Adc_StartConversation(void)
 }
 
 
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Adc_StopConversation(void)
 {
 	if(Adc_IsADCSRARegisterAvailable())
@@ -121,6 +140,9 @@ void Adc_StopConversation(void)
 }
 
 
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 Adc_ConversationStatus_t Adc_GetConversationStatus(void)
 {
 	Adc_ConversationStatus_t ret = ADC_COVERSATION_NOT_COMPLETE;
@@ -132,6 +154,9 @@ Adc_ConversationStatus_t Adc_GetConversationStatus(void)
 	return ret;
 }
 
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 boolean Adc_IsConversationComplete(void)
 {
 	boolean ret = FALSE;
@@ -145,7 +170,9 @@ boolean Adc_IsConversationComplete(void)
 }
 
 
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Adc_GetAdcValue(Adc_ADCHRegister_t* adcValuePtr)
 {
 	if (Adc_IsADCHRegisterAvailable() && adcValuePtr != NULL)
@@ -155,6 +182,10 @@ void Adc_GetAdcValue(Adc_ADCHRegister_t* adcValuePtr)
 	return;
 }
 
+
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Adc_GetAdcRawValue(uint16_t* valuePtr)
 {
 	if (Adc_IsADCHRegisterAvailable() && valuePtr != NULL)
@@ -164,7 +195,9 @@ void Adc_GetAdcRawValue(uint16_t* valuePtr)
 	return;
 }
 
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Adc_SetAdcReference(Adc_Reference_t adcRef)
 {
 	if(Adc_IsADMUXRegisterAvailable())
@@ -174,7 +207,9 @@ void Adc_SetAdcReference(Adc_Reference_t adcRef)
 	return;
 }
 
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 Adc_Reference_t Adc_GetAdcReference(void)
 {
 	Adc_Reference_t ret;
@@ -186,7 +221,9 @@ Adc_Reference_t Adc_GetAdcReference(void)
 	return ret;
 }
 
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Adc_SetResultStyls(Adc_ResultStyle_t adcStyle)
 {
 	if(Adc_IsADMUXRegisterAvailable())
@@ -195,6 +232,10 @@ void Adc_SetResultStyls(Adc_ResultStyle_t adcStyle)
 	}
 }
 
+
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 Adc_ResultStyle_t Adc_GetResultStyls(void)
 {
 	Adc_ResultStyle_t ret = ADC_RESULT_START_FROM_BIT_0_TO_9;

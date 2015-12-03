@@ -57,7 +57,9 @@ void Pwm_Init(Pwm_Channel_t Pwm_channel, Pwm_Mode_t Pwm_mode, Pwm_PreScaler_t Pw
      return;
 }
 
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Pwm_SetPwmRegister(Pwm_Channel_t Pwm_channel)
 {
     switch (Pwm_channel)
@@ -82,6 +84,9 @@ void Pwm_SetPwmRegister(Pwm_Channel_t Pwm_channel)
     return;
 }
 
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 Pwm_RegisterConfig_t* Pwm_GetChannel(Pwm_Channel_t Pwm_channel)
 {
     if(Pwm_channel == PWM_CHANNEL_0)
@@ -100,13 +105,17 @@ Pwm_RegisterConfig_t* Pwm_GetChannel(Pwm_Channel_t Pwm_channel)
     return NULL;
 }
 
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 Pwm_Config_t* Pwm_GetChannelConfig(Pwm_Channel_t Pwm_channel)
 {
     return (Pwm_config + (uint8_t)Pwm_channel);
 }
 
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Pwm_SetPwmMode(Pwm_Channel_t Pwm_channel, Pwm_Mode_t Pwm_mode)
 {
     Pwm_RegisterConfig_t* cfg;
@@ -117,7 +126,9 @@ void Pwm_SetPwmMode(Pwm_Channel_t Pwm_channel, Pwm_Mode_t Pwm_mode)
     return;
 }
 
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Pwm_SetActivationStatus(Pwm_Channel_t Pwm_channel, Pwm_Activation_t status)
 {
     Pwm_RegisterConfig_t* cfg;
@@ -141,7 +152,9 @@ void Pwm_SetActivationStatus(Pwm_Channel_t Pwm_channel, Pwm_Activation_t status)
     return;
 }
 
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Pwm_SetPwmPrescaler(Pwm_Channel_t Pwm_channel, Pwm_PreScaler_t Pwm_preScaler)
 {
     Pwm_Config_t* chCfg;
@@ -156,7 +169,9 @@ void Pwm_SetPwmPrescaler(Pwm_Channel_t Pwm_channel, Pwm_PreScaler_t Pwm_preScale
    return;   
 }
 
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Pwm_SetPwmDutyCycle(Pwm_Channel_t Pwm_channel, uint8_t Pwm_dutyCycle)
 {
     
@@ -168,6 +183,9 @@ void Pwm_SetPwmDutyCycle(Pwm_Channel_t Pwm_channel, uint8_t Pwm_dutyCycle)
     }                    
 }
 
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 Pwm_Mode_t Pwm_GetPwmMode(Pwm_Channel_t Pwm_channel)
 {
      Pwm_RegisterConfig_t* cfg = Pwm_GetChannel(Pwm_channel);
@@ -175,7 +193,9 @@ Pwm_Mode_t Pwm_GetPwmMode(Pwm_Channel_t Pwm_channel)
 }
 
 
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Pwm_EnableOrcPort(Pwm_Channel_t Pwm_channel)
 {
     Pwm_RegisterConfig_t* reg = Pwm_GetChannel(Pwm_channel);
@@ -185,7 +205,9 @@ void Pwm_EnableOrcPort(Pwm_Channel_t Pwm_channel)
     return;
 }
 
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Pwm_SetOutputMode(Pwm_Channel_t Pwm_channel, Pwm_OutputMode_t Pwm_output)
 {
     Pwm_RegisterConfig_t* reg = Pwm_GetChannel(Pwm_channel);

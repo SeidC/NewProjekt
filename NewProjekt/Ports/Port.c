@@ -9,7 +9,9 @@
 
 #include <avr/io.h>
                             
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Port_InitPort(Port_UsedPort_t portToUse)
 {
 	vuint8_t* port;
@@ -25,7 +27,9 @@ void Port_InitPort(Port_UsedPort_t portToUse)
 	RESET_BITS(*port,0x00);
 }
 
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Port_SetPinConfiguration(Port_UsedPort_t portToUse, Port_UsedPin_t  pinToUse, Port_IoControl_t pinDirection)
 {    
     vuint8_t* ddr;
@@ -43,7 +47,9 @@ void Port_SetPinConfiguration(Port_UsedPort_t portToUse, Port_UsedPin_t  pinToUs
     return;
 }
 
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Port_SetPin(Port_UsedPort_t portToUse, Port_UsedPin_t pinToUse, Port_IoStatus_t ioStatus)
 {                  
     vuint8_t *port = Port_GetPORTRegister(portToUse);    
@@ -58,7 +64,9 @@ void Port_SetPin(Port_UsedPort_t portToUse, Port_UsedPin_t pinToUse, Port_IoStat
     return;
 }
 
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 Port_IoStatus_t Port_GetPin(Port_UsedPort_t portToUse, Port_UsedPin_t pinToUse)
 {
     vuint8_t *port = Port_GetPINRegister(portToUse);
@@ -79,7 +87,9 @@ Port_IoStatus_t Port_GetPin(Port_UsedPort_t portToUse, Port_UsedPin_t pinToUse)
 }
 
 
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 vuint8_t* Port_GetDDRRegister(Port_UsedPort_t portToUse)
 {
       vuint8_t *portPtr;
@@ -109,7 +119,9 @@ vuint8_t* Port_GetDDRRegister(Port_UsedPort_t portToUse)
       return portPtr;
 }
 
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 vuint8_t* Port_GetPORTRegister(Port_UsedPort_t portToUse)
 {
     vuint8_t *portPtr;
@@ -139,7 +151,9 @@ vuint8_t* Port_GetPORTRegister(Port_UsedPort_t portToUse)
     return portPtr;
 }
 
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 vuint8_t* Port_GetPINRegister(Port_UsedPort_t portToUse)
 {
     vuint8_t *portPtr;
@@ -169,7 +183,9 @@ vuint8_t* Port_GetPINRegister(Port_UsedPort_t portToUse)
     return portPtr;
 }
 
-
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 Port_IoControl_t Port_GetDirection(Port_UsedPort_t portToUse, Port_UsedPin_t pinToUse)
 {
 	vuint8_t *port = Port_GetDDRRegister(portToUse);
