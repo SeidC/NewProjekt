@@ -46,6 +46,9 @@ Pwm_Config_t Pwm_config[PWM_NUMBER_OF_CHANNEL] =
                       },
 };
 
+/**************************************************************************************************
+ * FUNCTION:
+ **************************************************************************************************/
 void Pwm_Init(Pwm_Channel_t Pwm_channel, Pwm_Mode_t Pwm_mode, Pwm_PreScaler_t Pwm_preScaler, Pwm_OutputMode_t Pwm_output)
 {
 	 Pwm_SetPwmRegister(Pwm_channel);
